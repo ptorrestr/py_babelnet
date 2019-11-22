@@ -48,7 +48,7 @@ setup(
             ],
         url = "",
         author = 'Pablo Torres',
-        author_email = 'pablo.torres@bnamericas.com',
+        author_email = 'pablo.torres.t@gmail.com',
         license = 'MIT',
         packages = [name_package],
         setup_requires = ['pytest-runner'],
