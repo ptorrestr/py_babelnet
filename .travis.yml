@@ -1,0 +1,21 @@
+language: python
+cache:
+  - pip
+  - directories:
+    - $HOME/.pyenv_cache
+matrix:
+  include:
+    - os: linux
+      python: "3.6"
+before_install:
+install:
+  - python setup.py build
+script:
+  - python setup.py test
+after_success: |
+  if [ "${TRAVIS_BRANCH}" == "${TRAVIS_TAG}" ]; then
+    pip install twine
+    python setup.py bdist_wheel
+    twine upload ${PYPI_REPOSITORY_URL:+ --repository-url $PYPI_REPOSITORY_URL}\
+      -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+  fi
