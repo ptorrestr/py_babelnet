@@ -1,0 +1,14 @@
+# vim
+*.swp
+
+# python
+build
+dist
+data
+.eggs
+.cache
+__pycache__
+.pytest_cache
+.benchmarks
+*.egg-info
+*.pyc
