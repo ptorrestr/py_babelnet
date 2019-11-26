@@ -45,11 +45,10 @@ class BabelnetAPI(RestAPI):
     Args:
         key: the key to the rest service.
     """
-    url = "https://babelnet.io/v5"
 
-    def __init__(self, key):
+    def __init__(self, key, url = "https://babelnet.io/v5"):
         self.key = key
-        super().__init__(self.url)
+        super().__init__(url)
 
     def _add_key(self, args):
         """ Add the key to the parameter dictionary
@@ -74,7 +73,7 @@ class BabelnetAPI(RestAPI):
         Response:
             json output as a dictionary
         """
-        r = self._call(requests.get, "getVersion", 
+        r = self._call(requests.get, "getVersion",
                 params = self._encode_params(self._add_key(kargs)),
                 headers = self._headers())
         return r.json()
@@ -107,7 +106,7 @@ class BabelnetAPI(RestAPI):
         Response:
             json output as a dictionary
         """
-        r = self._call(requests.get, "getSenses", 
+        r = self._call(requests.get, "getSenses",
                 params = self._encode_params(self._add_key(kargs)),
                 headers = self._headers())
         return r.json()
